@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor Python com Trinket</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            display: flex;
+            background: #f4f4f4;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #2C3E50;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+        .sidebar ul {
+            list-style: none;
+            width: 100%;
+        }
+        .sidebar ul li {
+            padding: 12px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            background: #34495E;
+            margin: 10px 0;
+        }
+        .sidebar ul li:hover {
+            background: #1ABC9C;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 40px;
+            width: 100%;
+            text-align: center;
+        }
+        .editor, .tutorial {
+            display: none;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .btn {
+            display: inline-block;
+            background: #1ABC9C;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 1.1em;
+            border-radius: 5px;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #16A085;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li onclick="showPage('home')">🏠 Início</li>
+            <li onclick="showPage('editor')">💻 Editor Python</li>
+            <h2>📚 Tutorial Python</h2>
+            <li onclick="showPage('string')">📝 Strings</li>
+            <li onclick="showPage('int')">🔢 Inteiros</li>
+            <li onclick="showPage('float')">📏 Floats</li>
+            <li onclick="showPage('ifelse')">🔄 If / Else</li>
+            <li onclick="showPage('loops')">🔁 Loops</li>
+            <li onclick="showPage('funcoes')">🛠️ Funções</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div id="home">
+            <h1>Bem-vindo ao Editor Python</h1>
+            <p>Experimente escrever e executar código Python diretamente no navegador!</p>
+            <a href="#" class="btn" onclick="showPage('editor')">Ir para o Editor</a>
+        </div>
+        <div id="editor" class="editor">
+            <h1>Editor Python Trinket</h1>
+            <iframe src="https://trinket.io/embed/python3" loading="lazy" allowfullscreen></iframe>
+        </div>
+        
+        <div id="string" class="tutorial">
+            <h1>Tutorial: Strings</h1>
+            <p>Strings são sequências de caracteres, usadas para armazenar texto.</p>
+            <pre>print("Hello, World!")</pre>
+            <a href="#" class="btn" onclick="showPage('editor')">Agora é a sua vez</a>
+        </div>
+        
+        <div id="int" class="tutorial">
+            <h1>Tutorial: Inteiros</h1>
+            <p>Os inteiros (int) são números sem parte decimal.</p>
+            <pre>numero = 10
+print(numero)</pre>
+            <a href="#" class="btn" onclick="showPage('editor')">Agora é a sua vez</a>
+        </div>
+        
+        <div id="float" class="tutorial">
+            <h1>Tutorial: Floats</h1>
+            <p>Os números de ponto flutuante (float) possuem casas decimais.</p>
+            <pre>preco = 10.99
+print(preco)</pre>
+            <a href="#" class="btn" onclick="showPage('editor')">Agora é a sua vez</a>
+        </div>
+        
+        <div id="ifelse" class="tutorial">
+            <h1>Tutorial: If / Else</h1>
+            <p>O if/else é usado para tomar decisões com base em condições.</p>
+            <pre>idade = 18
+if idade >= 18:
+    print("Maior de idade")
+else:
+    print("Menor de idade")</pre>
+            <a href="#" class="btn" onclick="showPage('editor')">Agora é a sua vez</a>
+        </div>
+        
+        <div id="loops" class="tutorial">
+            <h1>Tutorial: Loops</h1>
+            <p>Os loops são usados para executar repetidamente um bloco de código.</p>
+            <pre>for i in range(5):
+    print(i)</pre>
+            <a href="#" class="btn" onclick="showPage('editor')">Agora é a sua vez</a>
+        </div>
+        
+        <div id="funcoes" class="tutorial">
+            <h1>Tutorial: Funções</h1>
+            <p>Funções são blocos reutilizáveis de código.</p>
+            <pre>def saudacao():
+    print("Olá, Mundo!")
+
+saudacao()</pre>
+            <a href="#" class="btn" onclick="showPage('editor')">Agora é a sua vez</a>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            const sections = document.querySelectorAll('.content > div');
+            sections.forEach(section => section.style.display = 'none');
+            const page = document.getElementById(pageId);
+            if (page) {
+                page.style.display = 'block';
+            }
+        }
+
+        // Mostrar a página inicial (home) ao carregar a página
+        document.addEventListener("DOMContentLoaded", () => {
+            showPage('home');
+        });
+    </script>
+</body>
+</html>

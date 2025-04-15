@@ -1,0 +1,1 @@
+// Componente auxiliar se precisar
