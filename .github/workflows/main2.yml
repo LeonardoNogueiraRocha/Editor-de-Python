@@ -1,0 +1,23 @@
+name: Teste de Scripts
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout do código
+      uses: actions/checkout@v3
+
+    - name: Configurar ambiente Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Instalar ESLint
+      run: |
+        npm install -g eslint
+        eslint --init
+
+    - name: Validar JavaScript
+      run: |
+        eslint **/*.js --max-warnings 0
